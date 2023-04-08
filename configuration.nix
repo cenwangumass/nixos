@@ -70,6 +70,7 @@
       thunderbird
     ];
     initialPassword = "nixos";
+    shell = pkgs.zsh;
   };
 
   # List packages installed in system profile. To search, run:
@@ -78,6 +79,10 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
+    neovim
+    conda
+    python310Packages.pipx
+    vscode
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -91,7 +96,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -112,5 +117,14 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
 
+  programs.zsh = {
+    enable = true;
+  };
+
+  # NVIDIA drivers are unfree.
+  nixpkgs.config.allowUnfree = true;
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.opengl.enable = true;
 }
 
