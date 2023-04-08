@@ -69,6 +69,7 @@
       firefox
       thunderbird
     ];
+    initialPassword = "nixos";
   };
 
   # List packages installed in system profile. To search, run:
