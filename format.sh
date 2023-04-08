@@ -1,7 +1,7 @@
 parted /dev/nvme0n1 -- mklabel gpt
-parted /dev/nvme0n1 -- mkpart primary 512MB 200GB
+parted /dev/nvme0n1 -- mkpart primary 2GB 200GB
 parted /dev/nvme0n1 -- mkpart primary linux-swap -8GB 100%
-parted /dev/nvme0n1 -- mkpart ESP fat32 1MB 512MB
+parted /dev/nvme0n1 -- mkpart ESP fat32 1MB 2GB
 parted /dev/nvme0n1 -- set 3 esp on
 
 mkfs.ext4 -L nixos /dev/nvme0n1p1
