@@ -63,6 +63,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.derekwang = {
     isNormalUser = true;
+    description = "Derek Wang";
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
